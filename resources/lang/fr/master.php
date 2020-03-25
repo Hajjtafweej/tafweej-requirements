@@ -1,0 +1,86 @@
+<?php
+
+return [
+  'gate_title' => 'Portail de coordination et de communication Pour le système global de Tafweej',
+  'gate_subtitle' => 'Bureaux des pèlerins',
+  'home_page' => 'La page principale',
+  'presentations' => 'Les présentations',
+
+  'surveys' => 'Le questionnaire',
+  'tafweej_plans' => 'Tafweej Plans',
+  'tafweej_tables' => 'Les tables de Tafwij',
+  'gallery_recent_title' => 'Nouvelles photos et vidéos',
+  'download' => 'Telecharge',
+  'view' => 'View',
+  'view_all' => 'Tout voir',
+  'all' => 'Tous',
+  'completed' => 'Complète',
+  'incompleted' => 'Incomplète',
+  'title' => 'Title',
+  'create_date' => 'Creer la date',
+  'answer' => 'Insérer la réponse',
+  'attachments' => 'pieces jointes',
+  'download_date' => 'Telecharge la date',
+  'downloaded' => 'Telecharge',
+  'not_downloaded' => 'Ne pas telecharge',
+  'copyright_text' => 'All copyrights reserved :year',
+  'soon' => 'Soon',
+  'not_downloaded_yet' => 'Not downloaded yet',
+  'presentation' => [
+    'no_presentations_found' => 'No presentations found'
+  ],
+  'gallery' => [
+    'recent_title' => 'Nouvelles photos et vidéos',
+    'title' => 'Les images et les vidéos',
+    'no_photos_videos_found' => 'No photos or videos found'
+  ],
+  'survey' => [
+    'date' => 'Date du questionnaire',
+    'last_answer_date' => 'Date de la dernière réponse',
+    'no_answer_yet' => 'No answer yet',
+    'no_surveys_found' => 'No questionnaires found',
+    'modal_title' => 'Answer the questionnaire',
+    'save' => 'ُEnregistrer le questionnaire',
+    'saved_successfully' => 'The questionnaire was saved successfully'
+  ],
+  'form' => [
+    'choose_country' => 'Choisissez un pays',
+    'name' => 'Nom',
+    'delegate_name' => 'Nom du délégué',
+    'email' => 'Email',
+    'country' => 'Pays'
+  ],
+  'other' => 'Other',
+  'all_times' => 'All times',
+  'hour' => 'Heure',
+  'minute' => 'Minute',
+  'day' => 'le jour',
+  'today' => 'Today',
+  'yesterday' => 'Yesterday',
+  'month' => 'le mois',
+  'choose' => 'Choisir',
+  'save' => 'Save',
+  'send' => 'Send',
+  'choose_percentage' => 'Choisir',
+  'choose_time' => 'Choisir le temps',
+  'to' => 'To',
+  'dhul_hijjah' => 'Dhul Hijjah',
+  'search_town' => 'Cherchez le quartier',
+  'enter_numeric' => 'Entrer le nombre',
+  'enter_notes_here' => 'Add your notes here',
+  'enter_other_option' => 'Enter the other option',
+  'add_note' => 'Ajouter des remarques',
+  'hide_note' => 'Hide note',
+  'check_required_fields' => 'Please check the required fields',
+  'unexpected_error_happened' => 'An error occurred, please try again',
+  'confirm_delete_msg' => 'Are sure of the deleting process?',
+  'email' => 'Email',
+  'page_not_found' => 'Page not found',
+  'contact_widget' => [
+    'banner' => 'Bienvenue dans le centre d\'assistance',
+    'help' => 'Aidez-moi',
+    'send_message' => 'Envoyer le message',
+    'submit' => 'Envoyer',
+    'confirmation' => 'Merci de nous avoir contactés, nous vous répondrons dans les plus brefs délais'
+  ]
+];

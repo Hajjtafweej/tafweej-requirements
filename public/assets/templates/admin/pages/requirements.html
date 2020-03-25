@@ -1,0 +1,139 @@
+<div class="page-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="widget-title">المتطلبات
+                    <span class="count" ng-show="totalRecords && !isDatatableLoading">{{ totalRecords }} متطلب</span>
+                </h3>
+            </div>
+            <div class="col col-sm-auto d-flex justify-content-end align-items-center">
+                <div class="form-group form-group-light mb-0 ml-2">
+                    <div class="input-icon">
+                        <i class="ic-search"></i>
+                        <input type="text" class="form-control default-font" placeholder="أبحث في المتطلبات"
+                            id="datatable_search" ng-model="datatable_search">
+                    </div>
+                </div>
+                <!-- Start Filter -->
+                <div class="page-header-filter">
+                    <div class="page-header-filter-dropdown ml-2 dropdown" ng-class="{'open': filter.isToggled}">
+                        <a class="btn btn-light-dark rounded d-flex align-items-center"
+                            ng-click="filter.toggleFilter()"><i
+                                class="ic-filter-f ml-2"></i>فلترة</a>
+                        <div class="dropdown-menu pb-5">
+                            <a class="close" ng-click="filter.toggleFilter()"><i class="ic-close"></i></a>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>العملية</label>
+                                        <ui-select
+                                            ng-model="filter.data.holy_place_id">
+                                            <ui-select-match placeholder="أبحث">{{ $select.selected.name }}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="item.id as item in filter.options.holy_places">
+                                                <div ng-bind-html="item.name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>الموضوع</label>
+                                        <ui-select
+                                            ng-model="filter.data.subject_id">
+                                            <ui-select-match placeholder="أبحث">{{ $select.selected.name }}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="item.id as item in filter.options.subjects">
+                                                <div ng-bind-html="item.name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>الموضوع الفرعي</label>
+                                        <ui-select
+                                            ng-model="filter.data.sub_subject_id">
+                                            <ui-select-match placeholder="أبحث">{{ $select.selected.name }}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="item.id as item in filter.options.sub_subjects">
+                                                <div ng-bind-html="item.name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-md-0">
+                                        <label>المستوى</label>
+                                        <ui-select
+                                            ng-model="filter.data.level_id">
+                                            <ui-select-match placeholder="أبحث">{{ $select.selected.name }}
+                                            </ui-select-match>
+                                            <ui-select-choices repeat="item.id as item in filter.options.levels">
+                                                <div ng-bind-html="item.name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-md-0">
+                                        <label>النطاق الجغرافي</label>
+                                        <ui-select
+                                            ng-model="filter.data.geographical_scope_id">
+                                            <ui-select-match placeholder="أبحث">{{ $select.selected.name }}
+                                            </ui-select-match>
+                                            <ui-select-choices
+                                                repeat="item.id as item in filter.options.geographical_scopes">
+                                                <div ng-bind-html="item.name"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit">
+                                <button type="button" class="btn btn-primary rounded" ng-click="filter.submit()">تصفية
+                                    النتائج</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Filter -->
+                <a class="btn btn-primary rounded" ng-click="participant.addRequirement()">أضف متطلب جديد</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-header-container">
+    <div class="container">
+        <ul class="filter-tags" ng-show="filter.tags.length">
+            <li ng-repeat="tag in filter.tags" uib-tooltip="{{tag.name}}">{{ tag.data }}<i ng-click="filter.removeTag($index,tag.key)"
+                    class="ic-close"></i></li>
+        </ul>
+        <div class="widget">
+            <div class="widget-datatable" ng-class="{'loading': isDatatableLoading}">
+                <table ng-hide="isDatatableLoading" datatable dt-options="Options" dt-columns="Columns"
+                    dt-instance="dtInstance" class="table-hover datatable-clickable"></table>
+                <div class="widget-table-body" ng-show="isDatatableLoading">
+                    <div class="dot-loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .widget-datatable th:nth-child(1) {
+        width: 15% !important;
+    }
+
+    .widget-datatable th:nth-child(2),
+    .widget-datatable th:nth-child(3),
+    .widget-datatable th:nth-child(5) {
+        width: 15% !important;
+    }
+
+
+    .widget-datatable th:nth-child(6) {
+        width: 10% !important;
+    }
+
+</style>
