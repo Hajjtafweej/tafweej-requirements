@@ -168,7 +168,7 @@
             @if($Requirements->count())
             @foreach($Requirements as $requirementKey => $Requirement)
             <tr class="table-body-item border-bottom">
-              <td class="border-l border-r text-center no"  style="widtd: 30px;padding: 10px 0;">{{ $requirementKey+1 }}</td>
+              <td class="border-l border-r text-center no"  style="widtd: 30px;padding: 10px 0;">R{{ $Requirement->id }}</td>
               <td class="border-l" style="width: 500px">{{ $Requirement->business_scope }}</td>
               <td class="border-l" style="width: 500px">{{ $Requirement->requirements }}</td>
             </tr>

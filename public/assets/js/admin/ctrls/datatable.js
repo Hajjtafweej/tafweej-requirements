@@ -22,16 +22,10 @@ App.controller('DatatableCtrl', function ($http, $httpParamSerializer, $filter, 
             end_date: ''
         },
         options: {
-            dates: [{
-                key: 'all',
-                value: 'جميع الأوقات'
-            }, {
-                key: 'today',
-                value: 'اليوم'
-            }, {
-                key: 'yesterday',
-                value: 'أمس'
-            }]
+            date: {
+                open_start_date: true,
+                open_end_date: true
+            }
         },
         format: {
             setDate: function (val) {
@@ -357,9 +351,12 @@ App.controller('DatatableCtrl', function ($http, $httpParamSerializer, $filter, 
             $scope.rowClickHandler = function (f) {
                 return $scope.participant.editRequirement(f.id);
             };
-            ordering_column = 1;
+            ordering_column = 6;
 
             var columns_list = [
+                DTColumnBuilder.newColumn('id').withTitle('#').renderWith(function (d, t, f) {
+                    return 'R'+d;
+                }),
                 DTColumnBuilder.newColumn('holy_place_name').withTitle('العملية').renderWith(function (d, t, f) {
                     return d;
                 }),
@@ -369,10 +366,16 @@ App.controller('DatatableCtrl', function ($http, $httpParamSerializer, $filter, 
                 DTColumnBuilder.newColumn('level_name').withTitle('المستوى').renderWith(function (d, t, f) {
                     return '<div>' + ((d && d != 'null') ? d : '') + '</div>';
                 }),
+                DTColumnBuilder.newColumn('business_scope').withTitle('مخرجات نطاق الأعمال').renderWith(function (d, t, f) {
+                    return '<div>' + ((d && d != 'null') ? d : '') + '</div>';
+                }),
                 DTColumnBuilder.newColumn('requirements').withTitle('المتطلبات').renderWith(function (d, t, f) {
                     return '<div>' + ((d && d != 'null') ? d : '') + '</div>';
                 }),
-                DTColumnBuilder.newColumn('participants_count').withTitle('الجهات المشاركة').renderWith(function (d, t, f) {
+                DTColumnBuilder.newColumn('updated_at').withTitle('آخر تحديث').renderWith(function (d, t, f) {
+                    return '<div>' + ((d && d != 'null') ? $filter('dateF')(d) : '') + '</div>';
+                }),
+                DTColumnBuilder.newColumn('participants_count').withTitle('عدد الجهات').renderWith(function (d, t, f) {
                     return d;
                 }).withOption('searchable', false),
                 DTColumnBuilder.newColumn('actions').withClass('text-left').renderWith(function (d, t, f) {

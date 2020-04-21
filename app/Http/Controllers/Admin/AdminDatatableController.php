@@ -144,7 +144,7 @@ class AdminDatatableController extends Controller
 		$start_date = ($q->start_date) ? $q->start_date : false;
 		$end_date = ($q->end_date) ? $q->end_date : false;
 
-		$getResults = \App\Requirement::selectRaw('requirements.id,subject.name as subject_name,level.name as level_name,requirements.business_scope,requirements.requirements,holy_place.name as holy_place_name,IFNULL((SELECT COUNT(id) FROM requirement_participants WHERE requirement_id = requirements.id GROUP BY requirement_participants.requirement_id LIMIT 1),0) as participants_count');
+		$getResults = \App\Requirement::selectRaw('requirements.id,requirements.updated_at,subject.name as subject_name,requirements.business_scope,level.name as level_name,requirements.requirements,holy_place.name as holy_place_name,IFNULL((SELECT COUNT(id) FROM requirement_participants WHERE requirement_id = requirements.id GROUP BY requirement_participants.requirement_id LIMIT 1),0) as participants_count');
 		$getResults = $getResults->leftJoin('list_of_holy_places as holy_place','requirements.holy_place_id','=','holy_place.id');
 		$getResults = $getResults->leftJoin('list_of_subjects as subject','requirements.subject_id','=','subject.id');
 		$getResults = $getResults->leftJoin('list_of_sub_subjects as sub_subject','requirements.sub_subject_id','=','sub_subject.id');
@@ -185,16 +185,21 @@ class AdminDatatableController extends Controller
 			$getResults = $getResults->whereDate(DB::raw($date_field),'<=',$end_date);
 		}
 
+
+
 		$getResults = $getResults->groupBy('requirements.id');
 		if($this->is_export){
 			return $this->exportToExcel($getResults);
 		}else {
-			return datatables()->of($getResults)->filterColumn('holy_place_name', function($query, $keyword) use($q) {
+			return datatables()->of($getResults)
+			->filterColumn('holy_place_name', function($query, $keyword) use($q) {
 				$query->whereRaw('holy_place.name like ?', ["%{$keyword}%"]);
 			})->filterColumn('subject_name', function($query, $keyword) use($q) {
 				$query->whereRaw('subject.name like ?', ["%{$keyword}%"]);
 			})->filterColumn('level_name', function($query, $keyword) use($q) {
 				$query->whereRaw('level.name like ?', ["%{$keyword}%"]);
+			})->filterColumn('id', function($query, $keyword) use($q) {
+				$query->where(DB::raw('requirements.id'),str_replace('R','',$keyword));
 			})
 			->addColumn('DT_RowId','{{ strtolower($id) }}')->make(true);
 		}

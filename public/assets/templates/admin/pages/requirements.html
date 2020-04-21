@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group mb-md-0">
+                                    <div class="form-group">
                                         <label>المستوى</label>
                                         <ui-select
                                             ng-model="filter.data.level_id">
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group mb-md-0">
+                                    <div class="form-group">
                                         <label>النطاق الجغرافي</label>
                                         <ui-select
                                             ng-model="filter.data.geographical_scope_id">
@@ -89,6 +89,20 @@
                                         </ui-select>
                                     </div>
                                 </div>
+                                <!-- <div class="col-md-12">
+                                    <div class="form-group mb-md-0">
+                                        <label>تاريخ التحديث</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" date-input ng-model-options="{timezone: 'utc'}" ng-class="{'focus': filter.options.date.open_start_date}" close-on-date-selection="true" uib-datepicker-popup="dd/MM/y" ng-focus="filter.options.date.open_start_date = true" ng-model="filter.data.start_date" is-open="filter.options.date.open_start_date" />
+                                            </div>
+                                            <div class="col-md-6">
+                                            <input type="text" class="form-control" date-input ng-model-options="{timezone: 'utc'}" ng-class="{'focus': filter.options.date.open_end_date}" close-on-date-selection="true" uib-datepicker-popup="dd/MM/y" ng-focus="filter.options.date.open_end_date = true" ng-model="filter.data.end_date" is-open="filter.options.date.open_end_date" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div> -->
                             </div>
                             <div class="submit">
                                 <button type="button" class="btn btn-primary rounded" ng-click="filter.submit()">تصفية
@@ -122,17 +136,24 @@
 </div>
 <style type="text/css">
     .widget-datatable th:nth-child(1) {
-        width: 15% !important;
+        width: 8% !important;
     }
 
     .widget-datatable th:nth-child(2),
     .widget-datatable th:nth-child(3),
-    .widget-datatable th:nth-child(5) {
-        width: 15% !important;
+    .widget-datatable th:nth-child(4) {
+        width: 10% !important;
+    }
+    .widget-datatable th:nth-child(5),
+    .widget-datatable th:nth-child(6) {
+        width: 17% !important;
     }
 
+    .widget-datatable th:nth-child(7) {
+        width: 10% !important;
+    }
 
-    .widget-datatable th:nth-child(6) {
+    .widget-datatable th:nth-child(9) {
         width: 10% !important;
     }
 

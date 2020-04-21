@@ -135,6 +135,7 @@
 			$Requirement->geographical_scope_id = $q->geographical_scope_id;
 			$Requirement->business_scope = $q->business_scope;
 			$Requirement->requirements = $q->requirements;
+			$Requirement->updated_at = date('Y-m-d H:i:s');
 			$Requirement->save();
 
 			/* Save participants */

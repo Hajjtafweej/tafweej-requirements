@@ -68,8 +68,8 @@ return [
         'primary_color' => '0DA2B1',
         'default_password' => 11223344
     ],
-    'app_asset_ver' => 133, // this version related with /app extension
-    'asset_ver' => 21, // for normal website version
+    'app_asset_ver' => 134, // this version related with /app extension
+    'asset_ver' => 22, // for normal website version
 
     /*
     |--------------------------------------------------------------------------
